@@ -6,5 +6,6 @@ public enum Stone {
 	REALITY,
 	MIND,
 	TIME,
-	SOUL
+	SOUL,
+	AD45
 }

@@ -7,6 +7,8 @@ public final class InfinityStone {
 	private final int power;
 	
 	// TODO: refactor, this violates the open/closed principle, cuz new stone added -> have to change this
+	// but in this case, properties are set, not method calls so, the properties set must be defined.
+	// this is a facotry
 	public InfinityStone(Stone stone) {
 		super();
 		this.name = stone.name();
@@ -37,9 +39,7 @@ public final class InfinityStone {
 				this.color = "Green";
 				break;
 			default:
-				this.power = 0;
-				this.color = "Transparent";
-				break;		
+				throw new IllegalArgumentException("This type not defined in the factory");
 		}
 	}
 

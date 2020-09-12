@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -19,9 +21,9 @@ public class Main {
 		Avenger drs = new Avenger("DrStrange", 5, Stone.TIME, 0);
 		Avenger wit = new Avenger("Wanda", 3, Stone.SPACE, 0);
 		
-		Avenger hul = new Avenger("Hulk", 9, Stone.SOUL, 1);
+//		Avenger hul = new Avenger("Hulk", 9, Stone.SOUL, 1);
 		
-		List<Avenger> list_of_heroes = List.of(cap,wid,muri,iro, pho,war,drs,wit, hul);
+		List<Avenger> list_of_heroes = List.of(cap,wid,muri,iro, pho,war,drs,wit);
 		
 //		cap.flameThrow();
 //		System.out.println(cap.getId());
@@ -44,7 +46,7 @@ public class Main {
 		
 		ship_2.addAvenger(pho); ship_2.addAvenger(war); ship_2.addAvenger(drs); ship_2.addAvenger(wit);
 		
-		ship_3.addAvenger(hul);
+//		ship_3.addAvenger(hul);
 		
 		System.out.println("ship 1");
 		ship_1.printStones();
@@ -74,6 +76,36 @@ public class Main {
 		System.out.println();
 		
 		ids.forEach(System.out::println);
+		
+//		int number_of_ships = (int)Math.floor(list_of_heroes.size() / 4.0) + list_of_heroes.size()%4 > 0 ? 1 : 0;
+		
+		List<Ship> ships = new ArrayList<Ship>();
+		Ship ship = new Ship(4);
+		int i = 0;
+		
+		for(Avenger avenger : list_of_heroes) {
+			
+			if(i<4)
+				ship.addAvenger(avenger);
+			else {
+				i=0;
+				ships.add(ship);
+				ship = new Ship(4);
+				ship.addAvenger(avenger);
+			}
+			i++;
+		}
+		
+		if(ship.hasMember())
+			ships.add(ship);
+		
+		System.out.println();
+		
+		List<Avenger> asd = new ArrayList<>(list_of_heroes);
+		
+		Collections.sort(asd);
+		
+		asd.forEach(System.out::println);
 	} 
 
 }

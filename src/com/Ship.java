@@ -55,6 +55,10 @@ public class Ship {
 			avengers[number++] = avg;		
 	}
 	
+	public boolean hasMember() {
+		return this.avengers[0] != null;
+	}
+	
 }
 
 
